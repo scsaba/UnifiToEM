@@ -18,7 +18,7 @@
                 <TextBlock  Grid.Column="1" Grid.Row="0" Text="{Binding Name}" Margin="5" />
 
                 <TextBlock Grid.Column="0" Grid.Row="1" Text="MatchingPatterns" VerticalAlignment="Center" Margin="5" />
-                <DataGrid Grid.Column="1" Grid.Row="1" x:Name="dataGrid" AutoGenerateColumns="False" ItemsSource="{Binding MatchingPatterns}">
+                <DataGrid Grid.Column="1" Grid.Row="1" x:Name="dataGrid" AutoGenerateColumns="False" ItemsSource="{Binding MatchingPattern}">
                     <DataGrid.Columns>
                         <DataGridTextColumn Binding="{Binding}" />
                     </DataGrid.Columns>
