@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Categories>
+  <Category>
+    <Name>Category 1</Name>
+    <MatchingPatterns>
+      <Pattern>Pattern 1 for category 1</Pattern>
+      <Pattern>Pattern 2 for category 1</Pattern>
+    </MatchingPatterns>
+  </Category>
+  <Category>
+    <Name>Category 2</Name>
+    <MatchingPatterns>
+      <Pattern>Pattern 1 for category 2</Pattern>
+      <Pattern>Pattern 2 for category 2</Pattern>
+    </MatchingPatterns>
+  </Category>
+</Categories>
