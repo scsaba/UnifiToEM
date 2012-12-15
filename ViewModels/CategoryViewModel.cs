@@ -1,13 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Input;
-using System.Xml;
+using UnifiToEM.IO;
+using UnifiToEM.Models;
 
-namespace UnifiToEM
+namespace UnifiToEM.ViewModels
 {
     public class CategoryViewModel : INotifyPropertyChanged
     {
@@ -59,8 +57,8 @@ namespace UnifiToEM
 
         private void ReadCategory()
         {
-            XCategoryReader reader = new CategoryReader();
-            Categories = reader.ReadCategories(;
+            CategoryReader reader = new CategoryReader();
+            Categories = reader.ReadCategories();
             CurrentCategory = Categories.FirstOrDefault();
         }
 
@@ -83,9 +81,9 @@ namespace UnifiToEM
 
         private void SaveCategory()
         {
-   
             CategoryWriter writer = new CategoryWriter("categories2.xml");
-            writer.WriteCategories(Categories);     }
+            writer.WriteCategories(Categories);
+        }
 
         private void OnPropertyChanged(string propertyName)
         {

@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using System.Xml;
 using System.Xml.Serialization;
+using UnifiToEM.Models;
 
-namespace UnifiToEM
+namespace UnifiToEM.IO
 {
     internal class CategoryReader : CategoryFile
     {
@@ -14,7 +11,7 @@ namespace UnifiToEM
         {
             using (XmlReader reader = new XmlNodeReader(Document.DocumentElement))
             {
-                XmlSerializer serializer = new XmlSerializer(typeof(List<CategoryModel>), new XmlRootAttribute("Categories);
+                XmlSerializer serializer = new XmlSerializer(typeof(List<CategoryModel>), new XmlRootAttribute(Categories));
                 List<CategoryModel> categories = serializer.Deserialize(reader) as List<CategoryModel>;
                 return categories;
             }

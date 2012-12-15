@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using System.Xml.Serialization;
 
-namespace UnifiToEM
+namespace UnifiToEM.Models
 {
     [XmlType("Pattern")]
     public class StringItem : INotifyPropertyChanged
