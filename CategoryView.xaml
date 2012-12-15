@@ -3,47 +3,57 @@
                     xmlns:local="clr-namespace:UnifiToEM">
     
     <DataTemplate DataType="{x:Type local:CategoryModel}">
-        <Border BorderBrush="Black" BorderThickness="1" Padding="1">
+        <Border BorderBrush="Black" BorderThickness="1" Padding="20">
             <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition />
                     <ColumnDefinition />
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="50" />
-                    <RowDefinition Height="*" />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
                 </Grid.RowDefinitions>
                 
-                <TextBlock Grid.Column="0" Grid.Row="0" Text="Name" VerticalAlignment="Center" Margin="5" />
-                <TextBlock  Grid.Column="1" Grid.Row="0" Text="{Binding Name}" Margin="5" />
+                <TextBlock Grid.Column="0" Grid.Row="0" Text="Name" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5" />
+                <TextBox  Grid.Column="1" Grid.Row="0" Text="{Binding Name, Mode=TwoWay, UpdateSourceTrigger=LostFocus}" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5" />
 
-                <TextBlock Grid.Column="0" Grid.Row="1" Text="MatchingPatterns" VerticalAlignment="Center" Margin="5" />
-                <DataGrid Grid.Column="1" Grid.Row="1" x:Name="dataGrid" AutoGenerateColumns="False" ItemsSource="{Binding MatchingPattern}">
-                    <DataGrid.Columns>
-                        <DataGridTextColumn Binding="{Binding}" />
-                    </DataGrid.Columns>
-                </DataGrid>
+                <TextBlock Grid.Column="0" Grid.Row="1" Text="MatchingPatterns" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5" />
+                <ListBox x:Name="lbPatterns" Grid.Column="1" Grid.Row="1" ItemsSource="{Binding MatchingPatterns}" HorizontalAlignment="Left" VerticalAlignment="Center" BorderThickness="0">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <DockPanel LastChildFill="True" HorizontalAlignment="Center">
+                                <TextBox DockPanel.Dock="Right" Text="{Binding Value, Mode=TwoWay, UpdateSourceTrigger=LostFocus}" Margin="2"  />
+                                <Button Content="Delete" Margin="2" Command="{Binding ElementName=lbPatterns, Path=DataContext.DeletePatternCommand}" CommandParameter="{Binding}" />
+                            </DockPanel>
+                        </DataTemplate>                        
+                    </ListBox.ItemTemplate>
+                </ListBox>
+
+                <StackPanel Orientation="Horizontal" Margin="5" Grid.Column="1" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Left">
+                    <TextBox x:Name="tbPatternToAdd" Text=""  VerticalAlignment="Center" Margin="2" />
+                    <Button Content="Add" Command="{Binding Path=AddPatternCommand}" CommandParameter="{Binding ElementName=tbPatternToAdd, Path=Text}" VerticalAlignment="Center" Margin="2" />
+                </StackPanel>
             </Grid>
         </Border>        
     </DataTemplate>
     
     <DataTemplate DataType="{x:Type local:CategoryViewModel}">
-        <StackPanel>
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" >
-                <TextBlock Text="Proba" Margin="5" />
-                <ComboBox Text="ComboProba" Margin="5" ItemsSource="{Binding Categories}" DisplayMemberPath="Name" />
-            </StackPanel>
-            <DockPanel Margin="20">
-                <DockPanel DockPanel.Dock="Top">
+        <StackPanel HorizontalAlignment="Center">
+            <ComboBox Text="ComboProba" Margin="5" ItemsSource="{Binding Categories}" DisplayMemberPath="Name" HorizontalAlignment="Center">
+                <ComboBox.SelectedItem>
+                    <Binding Path="CurrentCategory" Mode="TwoWay" />
+                </ComboBox.SelectedItem>
+            </ComboBox>
+            <DockPanel>
+                <DockPanel DockPanel.Dock="Top" HorizontalAlignment="Center">
                     <Button Content="Save Category" DockPanel.Dock="Right" Margin="10,2" VerticalAlignment="Center"
                             Command="{Binding Path=SaveCategoryCommand}" Width="100" />
 
-                    <Button Content="Get Category" DockPanel.Dock="Right" Margin="10,2" VerticalAlignment="Center"
-                            Command="{Binding Path=ReadCategoryCommand}" IsDefault="True" Width="100" />
-
+                    <Button Content="Get Category" DockPanel.Dock="Left" Margin="10,2" VerticalAlignment="Center"
+                            Command="{Binding Path=ReadCategoryCommand}" Width="100" />
                 </DockPanel>
-                
-                <ContentControl Margin="10" Content="{Binding Path=CurrentCategory}" />
+                <ContentControl HorizontalAlignment="Center" Margin="10" Content="{Binding Path=CurrentCategory}" />
             </DockPanel>
         </StackPanel>
     </DataTemplate>

@@ -10,7 +10,7 @@ namespace UnifiToEM
 {
     internal class CategoryReader
     {
-        internal static List<Category> ReadCategories(XmlNode categoriesNode)
+        internal static List<CategoryModel> ReadCategories(XmlNode categoriesNode)
         {
             if (categoriesNode == null)
                 throw new ArgumentNullException("categoriesNode");
@@ -20,8 +20,8 @@ namespace UnifiToEM
 
             using (XmlReader reader = new XmlNodeReader(categoriesNode))
             {
-                XmlSerializer serializer = new XmlSerializer(typeof(List<Category>), new XmlRootAttribute("Categories"));
-                List<Category> categories = serializer.Deserialize(reader) as List<Category>;
+                XmlSerializer serializer = new XmlSerializer(typeof(List<CategoryModel>), new XmlRootAttribute("Categories"));
+                List<CategoryModel> categories = serializer.Deserialize(reader) as List<CategoryModel>;
                 return categories;
             }
         }

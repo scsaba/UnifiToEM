@@ -63,13 +63,11 @@ namespace UnifiToEM
             categoriesXml.Load("Categories.xml");
 
             Categories = CategoryReader.ReadCategories(categoriesXml.DocumentElement);
-
-            CategoryModel m = new CategoryModel();
-            CurrentCategory = m;
+            CurrentCategory = Categories.FirstOrDefault();
         }
 
-        private List<Category> categories;
-        public List<Category> Categories 
+        private List<CategoryModel> categories;
+        public List<CategoryModel> Categories 
         {
             get
             {
