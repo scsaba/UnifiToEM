@@ -54,7 +54,8 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="RelayCommand.cs" />
-    <Page Include="CategoryView.xaml">
+    <Page Include="CategoryView.xamCategoryFile.cs" />
+    <Compile Include="CategoryWriter.cs" /Include="CategoryView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

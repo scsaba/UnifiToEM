@@ -59,10 +59,8 @@ namespace UnifiToEM
 
         private void ReadCategory()
         {
-            XmlDocument categoriesXml = new XmlDocument();
-            categoriesXml.Load("Categories.xml");
-
-            Categories = CategoryReader.ReadCategories(categoriesXml.DocumentElement);
+            XCategoryReader reader = new CategoryReader();
+            Categories = reader.ReadCategories(;
             CurrentCategory = Categories.FirstOrDefault();
         }
 
@@ -85,7 +83,9 @@ namespace UnifiToEM
 
         private void SaveCategory()
         {
-        }
+   
+            CategoryWriter writer = new CategoryWriter("categories2.xml");
+            writer.WriteCategories(Categories);     }
 
         private void OnPropertyChanged(string propertyName)
         {

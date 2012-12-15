@@ -31,7 +31,7 @@
                 </ListBox>
 
                 <StackPanel Orientation="Horizontal" Margin="5" Grid.Column="1" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Left">
-                    <TextBox x:Name="tbPatternToAdd" Text=""  VerticalAlignment="Center" Margin="2" />
+                    <TextBox x:Name="tbPatternToAdd" Text="pattern to add"  VerticalAlignment="Center" Margin="2" />
                     <Button Content="Add" Command="{Binding Path=AddPatternCommand}" CommandParameter="{Binding ElementName=tbPatternToAdd, Path=Text}" VerticalAlignment="Center" Margin="2" />
                 </StackPanel>
             </Grid>
