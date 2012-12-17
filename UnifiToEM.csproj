@@ -53,11 +53,12 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="IO\CategoryFile.cs" />
+    <Compile Include="IO\CategoryWriter.cs" />
     <Compile Include="RelayCommand.cs" />
-    <Page Include="CategoryView.xamIO\CategoryFile.cs" />
-    <Compile Include="IO\ategoryWriter.cs" /Include="CategoryView.xaml">
+    <Page Include="Views\CategoryView.xaml">
       <SubType>Designer</SubType>
-   Views\   <Generator>MSBuild:Compile</Generator>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -67,11 +68,11 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="CategoryModel.cs" />
-    <Compile Include="CategoryReader.cs" />
-    Models\CategoryModel.cs" />
+    <Compile Include="Models\CategoryModel.cs" />
     <Compile Include="IO\CategoryReader.cs" />
-    <Compile Include="ViewModels\   <DependentUpon>MainWindow.xaml</DependentUpon>
+    <Compile Include="ViewModels\CategoryViewModel.cs" />
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
