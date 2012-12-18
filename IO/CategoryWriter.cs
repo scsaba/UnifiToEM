@@ -12,7 +12,7 @@ namespace UnifiToEM.IO
         internal CategoryWriter() : base() { }
         internal CategoryWriter(string path) : base(path) { }
 
-        internal void WriteCategories(List<CategoryModel> categories)
+        internal void WriteCategories(List<Category> categories)
         {
             if (categories == null)
                 throw new ArgumentNullException("categories");
@@ -25,7 +25,7 @@ namespace UnifiToEM.IO
                 XmlSerializerNamespaces ns = new XmlSerializerNamespaces();
                 ns.Add("", "");
 
-                XmlSerializer serializer = new XmlSerializer(typeof(List<CategoryModel>), new XmlRootAttribute(Categories));
+                XmlSerializer serializer = new XmlSerializer(typeof(List<Category>), new XmlRootAttribute(Categories));
                 serializer.Serialize(writer, categories, ns);
             }
         }

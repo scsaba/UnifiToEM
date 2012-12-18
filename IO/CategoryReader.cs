@@ -7,12 +7,12 @@ namespace UnifiToEM.IO
 {
     internal class CategoryReader : CategoryFile
     {
-        internal List<CategoryModel> ReadCategories()
+        internal List<Category> ReadCategories()
         {
             using (XmlReader reader = new XmlNodeReader(Document.DocumentElement))
             {
-                XmlSerializer serializer = new XmlSerializer(typeof(List<CategoryModel>), new XmlRootAttribute(Categories));
-                List<CategoryModel> categories = serializer.Deserialize(reader) as List<CategoryModel>;
+                XmlSerializer serializer = new XmlSerializer(typeof(List<Category>), new XmlRootAttribute(Categories));
+                List<Category> categories = serializer.Deserialize(reader) as List<Category>;
                 return categories;
             }
         }
