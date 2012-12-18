@@ -2,12 +2,14 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <Application.Resources>
+        
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="/Views/CategoryView.xaml" />
-                <!--<ResourceDictionary Source="/Views/Styles.xaml" />-->
+                <!--<ResourceDictionary Source="/Views/CategoryView.xaml" />
+                <ResourceDictionary Source="/Views/Styles.xaml" />-->
+                <ResourceDictionary Source="/Views/Resources.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
-
+        
     </Application.Resources>
 </Application>

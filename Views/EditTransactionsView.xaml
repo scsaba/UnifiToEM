@@ -1,0 +1,47 @@
+﻿<UserControl x:Class="UnifiToEM.Views.EditTransactionsView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <DataGrid
+        x:Name="dataGrid"
+        ItemsSource="{Binding Transactions}"
+        AutoGenerateColumns="False">
+        <DataGrid.Columns>
+            <DataGridTextColumn Header="Description" Binding="{Binding Description}" IsReadOnly="False" />
+            <DataGridTemplateColumn Header="Category" IsReadOnly="False">
+                <DataGridTemplateColumn.CellTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding Category.Name}" />
+                    </DataTemplate>
+                </DataGridTemplateColumn.CellTemplate>
+                <DataGridTemplateColumn.CellEditingTemplate>
+                    <DataTemplate>
+                        <ComboBox ItemsSource="{Binding ElementName=dataGrid,Path=DataContext.Categories}" DisplayMemberPath="Name" />
+                    </DataTemplate>
+                </DataGridTemplateColumn.CellEditingTemplate>
+            </DataGridTemplateColumn>
+
+
+            <DataGridTextColumn Header="Amount" Binding="{Binding Amount}" IsReadOnly="False" />
+            <DataGridTextColumn Header="Status" Binding="{Binding Status}" IsReadOnly="False" />
+
+            <DataGridTemplateColumn Header="Date" IsReadOnly="False">
+                <DataGridTemplateColumn.CellTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding Date, StringFormat={}\{0:yyyy-MMM-dd\}}" />
+                    </DataTemplate>
+                </DataGridTemplateColumn.CellTemplate>
+                <DataGridTemplateColumn.CellEditingTemplate>
+                    <DataTemplate>
+                        <DatePicker SelectedDate="{Binding Date}" />
+                    </DataTemplate>
+                </DataGridTemplateColumn.CellEditingTemplate>
+            </DataGridTemplateColumn>
+
+            <DataGridTextColumn Header="Remarks" Binding="{Binding Remarks}" IsReadOnly="False" />
+        </DataGrid.Columns>
+    </DataGrid>
+</UserControl>

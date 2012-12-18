@@ -19,8 +19,6 @@ namespace UnifiToEM
             base.OnStartup(e);
 
             MainWindow app = new MainWindow();
-            CategoryListViewModel context = new CategoryListViewModel();
-            app.DataContext = context;
             app.Show();
         }
 

@@ -12,23 +12,17 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using System.Xml;
-using UnifiToEM.ViewModels;
 
-namespace UnifiToEM
+namespace UnifiToEM.Views
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for CategoryListView.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class CategoryListView : UserControl
     {
-        private MainWindowViewModel viewModel;
-
-        public MainWindow()
+        public CategoryListView()
         {
             InitializeComponent();
-            viewModel = new MainWindowViewModel();
-            this.DataContext = viewModel;
         }
     }
 }

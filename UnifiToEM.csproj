@@ -56,11 +56,25 @@
     <Compile Include="IO\CategoryFile.cs" />
     <Compile Include="IO\CategoryWriter.cs" />
     <Compile Include="RelayCommand.cs" />
-    <Compile Include="ViewModels\CategoryViewModel.cs" />
+    <Compile Include="ViewModels\CateModels\Transactionompile Include="ViewModels\CategoryViewModel.cs" />
     <Compile Include="ViewModels\StringItem.cs" />
-    <Page Include="Views\CategoryView.xaml">
-      <SubType>Designer</SubType>
+    <Page Include="Views\CategoryView.xamEditTransactionsViewModel.cs" />
+    <Compile Include="ViewModels\MainWindowViewModel.cs" />
+    <Compile Include="ViewModels\StringItem.cs" />
+    <Compile Include="Views\CategoryListView.xaml.cs">
+      <DependentUpon>CategoryListView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CategoryView.xaml.cs">
+      <DependentUpon>CategoryView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\EditTransactionsView.xaml.cs">
+      <DependentUpon>EditTransactionsView.xaml</DependentUpon>
+    </Compile>
+    <Page Include="Views\CategoryListor>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
+       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -79,7 +93,15 @@
     </Compile>
     <Page Include="Views\Styles.xaml">
       <SubType>Designer</SubType>
+      <Generator>MSBuild:CompilEditTransactionsor>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
+ Views\ResourcesSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+ Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
