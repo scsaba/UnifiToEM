@@ -5,7 +5,8 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using UnifiToEM.IO;
+using UnifiToSystem.Windows;
+using System.Windows.Inputg UnifiToEM.IO;
 using UnifiToEM.Models;
 
 namespace UnifiToEM.ViewModels
@@ -87,6 +88,67 @@ namespace UnifiToEM.ViewModels
                 var e = new PropertyChangedEventArgs(propertyName);
                 this.PropertyChanged(this, e);
             }
+        }
+    }
+}
+
+
+        private ICommand importFileCommand;
+        public ICommand ImportFileCommand
+        {
+            get
+            {
+                if (importFileCommand == null)
+                {
+                    importFileCommand = new RelayCommand(param => ImportFile());
+                }
+                return importFileCommand;
+            }
+        }
+
+        private void ImportFile()
+        {
+            Microsoft.Win32.OpenFileDialog dlg = new Microsoft.Win32.OpenFileDialog();
+            dlg.RestoreDirectory = true;
+            dlg.DefaultExt = ".txt"; // Default file extension
+            dlg.Filter = "Html documents (.html)|*.html|Text files (*.txt)|*.*|All files (*.*)|*.*"; // Filter files by extension 
+
+            // Show open file dialog box
+            Nullable<bool> result = dlg.ShowDialog();
+
+            // Process open file dialog box results 
+            if (result == true)
+            {
+                // Open document 
+                string filename = dlg.FileName;
+
+                IEnumerable<Transaction> importedTransactions = Importer.Instance.ImportFile(filename);
+                if (transactions == null)
+                {
+                    MessageBox.Show("Cannot import file");
+                    return;
+                }
+
+                Transactions = new ObservableCollection<Transaction>(importedTransactions);
+            }
+        }
+
+        private ICommand exportCSVCommand;
+        public ICommand ExportCSVCommand
+        {
+            get
+            {
+                if (exportCSVCommand == null)
+                {
+                    exportCSVCommand = new RelayCommand(param => ExportCSV());
+                }
+                return exportCSVCommand;
+            }
+        }
+
+        private void ExportCSV()
+        {
+
         }
     }
 }

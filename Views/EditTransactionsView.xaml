@@ -5,51 +5,63 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
-    <DataGrid
+    <DataGridockPanel LastChildFill="true">
+        <StackPanel DockPanel.Dock="Top" Orientation="Horizontal">
+            <Button Content="Import file" Grid.Column="0" Grid.Row="0"  Margin="5" Padding="2" HorizontalAlignment="Right" VerticalAlignment="Center"
+                            Command="{Binding Path=ImportFileCommand}" />
+
+            <Button Content="Export CSV" Grid.Column="1" Grid.Row="0" Margin="5" Padding="2" HorizontalAlignment="Left" VerticalAlignment="Center"
+                            Command="{Binding Path=ExportCSVCommand}" />
+        </StackPanel>
+    taGrid
         x:Name="dataGrid"
         ItemsSource="{Binding Transactions}"
         AutoGenerateColumns="False">
-        <DataGrid.Columns>
-            <DataGridTextColumn Header="Description" Binding="{Binding Description}" IsReadOnly="False" />
-            <DataGridTemplateColumn Header="Category" IsReadOnly="False">
-            CanUserSort="True" SortMemberPath="Category.NamemplateColumn.CellTemplate>
-                    <DataTemplate>
-                        <TextBlock Text="{Binding Date, StringFormat={}\{0:yyyy-MMM/>
+        <DataGrid.C    <DataGrid.Columns>
+    <DataGridTextColumn Header="Description" Binding="{Binding Description}" IsReadOnly="False" />
+            <DataGridTempTemplateColumn Header="Category" IsReadOnly="False">
+            CanUserSort="True" SortMemberPath="Category.NamemplateColumn.CellTem    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+    k Text="{Binding Date, StringFormat={}\{0:yyyy-MMM/>
                     </DataTemplate>
-                </DataGridTemplateColumn.CellTemplate>
-                <DataGridTemplateColumn.CellEditingTemplate>
-                    <DataTemplate>
-                        <ComboBox ItemsSource="{Binding ElementName=dataGrid,Path=DataContext.Categories}" DisplayMemberPath="NaSelectedItem="{Binding Category"Name" />
+     </DataTemplate>
+    olumn.CellTemplate>
+                <DataGridTemplateColumn.CellEditingT    <DataGridTemplateColumn.CellEditingTemplate>
+                        <DataTemplate>
+       <ComboBox ItemsSource="{Binding ElementName=dataGrid,Path=DataContext.Categories}" DisplayMemberPath="NaSelectedItem="{Binding Category"Name" />
                     </DataTemplate>
-                </DataGridTemplateColumn.CellEditingTemplate>
-            </DataGridTemplateColumn>
+          </DataTemplate>
+                    </DataGridTemplateColumn.CellEditingTemplate>
+                </DataGridTemplateColumn>
 
 
-            <DataGridTextColumn Header="Amount" Binding="{Binding Amount}" IsReadOnly="False" />
-            <DataGridTextColumn Header="Status" Binding="{Binding Status}" IsReadOnly="False" />
+    lumn Header="Amount" Binding="{Binding Amount}" IsReadOnly="False" />
+            <DataGridTextColumn Header="    <DataGridTextColumn Header="Status" Binding="{Binding Status}" IsReadOnly="False" />
 
-            <DataGridTemplateColumn Header="Date" IsReadOnly="False">
-                <DataGridTem CanUserSort="True" SortMemberPath="DatemplateColumn.CellTemplate>
-                    <DataTemplate>
-                        <TextBlock Text="{Binding Date, StringFormat={}\{0:yyyy-MMM-dd\}}" />
+    olumn Header="Date" IsReadOnly="False">
+                <DataGridTem CanUserSort="True" SortMemberPath="DatemplateColumn.CellTem    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+    k Text="{Binding Date, StringFormat={}\{0:yyyy-MMM-dd\}}" />
                     </DataTemplate>
-                </DataGridTemplateColumn.CellTemplate>
-                <DataGridTemplateColumn.CellEditingTemplate>
-                    <DataTemplate>
-                        <DatePicker SelectedDate="{Binding Date}" />
-                    </DataTemplate>
-                </DataGridTemplateColumn.CellEditingTemplate>
-            </DataGridTemplateColumn>
+                </    </DataTemplate>
+    olumn.CellTemplate>
+                <DataGridTemplateColumn.CellEditingT    <DataGridTemplateColumn.CellEditingTemplate>
+                        <DataTemplate>
+                            <DatePicker SelectedDate="{Binding Date}" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellEditingTemplate>
+                </DataGridTemplateColumn>
 
-            <DataGridTextColumn Header="Remarks" Binding="{Binding Remarks}" IsReadOnly="False" />
+    arks" Binding="{Binding Remarks}" IsReadOnly="False" />
         </DataGrid.Columns>
     </DataG>
-                <DataGridTextColumn.ElementStyle>
-                    <Style TargetType="TextBlock">
-                        <Setter Property="TextWrapping" Value="Wrap" />
-                    </Style>
-                </DataGridTextColumn.ElementStyle>
-            </DataGridTextColumn>
-        </DataGrid.Columns>
-    </DataGrid>
+                <    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="TextBlock">
+                         <Setter Property="TextWrapping" Value="Wrap" />
+                    </St    </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+    </DockPanel>
 </UserControl>
