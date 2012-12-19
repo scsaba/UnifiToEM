@@ -45,8 +45,7 @@ namespace UnifiToEM.Models
             get
             {
                 return matchingPatterns;
-            }
-        }
+            }  }
 
         public void AddPattern(string pattern)
         {
@@ -77,5 +76,8 @@ namespace UnifiToEM.Models
                 PatternsChanged(changed, pattern);
             }
         }
+    }
+}
+
     }
 }

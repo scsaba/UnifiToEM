@@ -12,14 +12,14 @@
         <DataGrid.Columns>
             <DataGridTextColumn Header="Description" Binding="{Binding Description}" IsReadOnly="False" />
             <DataGridTemplateColumn Header="Category" IsReadOnly="False">
-                <DataGridTemplateColumn.CellTemplate>
+            CanUserSort="True" SortMemberPath="Category.NamemplateColumn.CellTemplate>
                     <DataTemplate>
-                        <TextBlock Text="{Binding Category.Name}" />
+                        <TextBlock Text="{Binding Date, StringFormat={}\{0:yyyy-MMM/>
                     </DataTemplate>
                 </DataGridTemplateColumn.CellTemplate>
                 <DataGridTemplateColumn.CellEditingTemplate>
                     <DataTemplate>
-                        <ComboBox ItemsSource="{Binding ElementName=dataGrid,Path=DataContext.Categories}" DisplayMemberPath="Name" />
+                        <ComboBox ItemsSource="{Binding ElementName=dataGrid,Path=DataContext.Categories}" DisplayMemberPath="NaSelectedItem="{Binding Category"Name" />
                     </DataTemplate>
                 </DataGridTemplateColumn.CellEditingTemplate>
             </DataGridTemplateColumn>
@@ -29,7 +29,7 @@
             <DataGridTextColumn Header="Status" Binding="{Binding Status}" IsReadOnly="False" />
 
             <DataGridTemplateColumn Header="Date" IsReadOnly="False">
-                <DataGridTemplateColumn.CellTemplate>
+                <DataGridTem CanUserSort="True" SortMemberPath="DatemplateColumn.CellTemplate>
                     <DataTemplate>
                         <TextBlock Text="{Binding Date, StringFormat={}\{0:yyyy-MMM-dd\}}" />
                     </DataTemplate>
@@ -42,6 +42,14 @@
             </DataGridTemplateColumn>
 
             <DataGridTextColumn Header="Remarks" Binding="{Binding Remarks}" IsReadOnly="False" />
+        </DataGrid.Columns>
+    </DataG>
+                <DataGridTextColumn.ElementStyle>
+                    <Style TargetType="TextBlock">
+                        <Setter Property="TextWrapping" Value="Wrap" />
+                    </Style>
+                </DataGridTextColumn.ElementStyle>
+            </DataGridTextColumn>
         </DataGrid.Columns>
     </DataGrid>
 </UserControl>
