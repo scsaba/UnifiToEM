@@ -8,10 +8,10 @@
     <DataGridockPanel LastChildFill="true">
         <StackPanel DockPanel.Dock="Top" Orientation="Horizontal">
             <Button Content="Import file" Grid.Column="0" Grid.Row="0"  Margin="5" Padding="2" HorizontalAlignment="Right" VerticalAlignment="Center"
+ 
                             Command="{Binding Path=ImportFileCommand}" />
-
-            <Button Content="Export CSV" Grid.Column="1" Grid.Row="0" Margin="5" Padding="2" HorizontalAlignment="Left" VerticalAlignment="Center"
-                            Command="{Binding Path=ExportCSVCommand}" />
+           <Button Content="Export CSV" Grid.Column="1" Grid.Row="0" Margin="5" Padding="2" HorizontalAlignment="Left" VerticalAlignment="Center"
+                            Command="{Binding Path=ExportCSVCommand}" />
         </StackPanel>
     taGrid
         x:Name="dataGrid"
@@ -36,9 +36,9 @@
 
 
     lumn Header="Amount" Binding="{Binding Amount}" IsReadOnly="False" />
-            <DataGridTextColumn Header="    <DataGridTextColumn Header="Status" Binding="{Binding Status}" IsReadOnly="False" />
-
-    olumn Header="Date" IsReadOnly="False">
+            <DataGridTextColumn Header="    <DataGridTextCol!--
+                <DataGridTextColumn Header="Status" Binding="{Binding Status}" IsReadOnly="False" />
+                -->r="Date" IsReadOnly="False">
                 <DataGridTem CanUserSort="True" SortMemberPath="DatemplateColumn.CellTem    <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
     k Text="{Binding Date, StringFormat={}\{0:yyyy-MMM-dd\}}" />

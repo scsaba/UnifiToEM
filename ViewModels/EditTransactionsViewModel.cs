@@ -24,7 +24,7 @@ namespace UnifiToEM.ViewModels
                     Amount=1200.50, 
                     Date=new DateTime(2012, 12, 12), 
                     Status="Uncleared", 
-                    Remarks="remarks 1" 
+    //                Remarks="remarks 1" 
                 });
 
             testTransactions.Add(
@@ -35,7 +35,7 @@ namespace UnifiToEM.ViewModels
                     Amount = 100,
                     Date = new DateTime(2012, 12, 1),
                     Status = "Uncleared",
-                    Remarks = "remarks 2"
+              //      Remarks = "remarks 2"
                 });
             testTransactions.Add(
                 new Transaction()
@@ -45,7 +45,7 @@ namespace UnifiToEM.ViewModels
                     Amount = 1212111,
                     Date = new DateTime(2012, 12, 24),
                     Status = "Uncleared",
-                    Remarks = "remarks 3"
+                    Rema//rks = "remarks 3"
                 });
 
             Transactions = new ObservableCollection<Transaction>(testTransactions);
@@ -73,13 +73,13 @@ namespace UnifiToEM.ViewModels
             get
             {
                  CategoryReader reader = new CategoryReader();
-                 List<Category> categories = reader.ReadCategories();
-                 return categories;
+                 List<CategCategoryReader reader = new CategoryReader();
+           return categories;
             }
         }
 
 
-        public event PropertyChangedEventHandler PropertyChanged;
+        public event PropertyCangedEventHandler PropertyChanged;
 
         private void OnPropertyChanged(string propertyName)
         {
@@ -133,10 +133,34 @@ namespace UnifiToEM.ViewModels
             }
         }
 
-        private ICommand exportCSVCommand;
+        private IComSetCategoryForTransactions(importedTransactions);
+                      private ICommand exportCSVCommand;
         public ICommand ExportCSVCommand
         {
             get
+            {
+                ivoid SetCategoryForTransactions(IEnumerable<Transaction> transactions)
+        {
+            List<Category> categories = Categories;
+
+            // order patterns by length => if a pattern is more general it will be found later
+            IEnumerable<String> allPatterns = categories.SelectMany(category => category.MatchingPatterns).OrderBy(pattern => -pattern.Length);
+
+            foreach (Transaction transaction in transactions)
+            {
+                // try to search for pattern in the description first
+                string patternFound = allPatterns.Where(pattern => transaction.Description.IndexOf(pattern, StringComparison.InvariantCultureIgnoreCase) > 0).Select(pattern => pattern).FirstOrDefault();
+
+                // if not found then try to search for pattern in the remarks
+                if (String.IsNullOrEmpty(patternFound))
+                {
+                    patternFound = allPatterns.Where(pattern => transaction.Remarks.IndexOf(pattern, StringComparison.InvariantCultureIgnoreCase) > 0).Select(pattern => pattern).FirstOrDefault();
+                }
+
+                if (!String.IsNullOrEmpty(patternFound))
+                {
+                    transaction.Category = categories.Where(category => category.MatchingPatterns.Contains(patternFound)).Select(category => category).FirstOrDefault();
+                }           get
             {
                 if (exportCSVCommand == null)
                 {

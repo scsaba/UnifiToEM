@@ -62,8 +62,8 @@ namespace UnifiToEM.ViewModels
         private void ReadCategories()
         {      CategoryReader reader = new CategoryReader();
             List<CategoryViewModel> categoryVMs = new List<CategoryViewModel>();
-            foreach (Category category in reader.ReadCategories())
-            {
+            foreach (List<Category> categories = reader.ReadCategories();
+            foreach (Category category in categories     {
                 CategoryViewModel model = new CategoryViewModel() { Category = category };
                 categoryVMs.Add(model);
             }
@@ -74,7 +74,7 @@ namespace UnifiToEM.ViewModels
 te ObservableCollection<CategoryViewModel> categories;
         public ObservableCollection<CategoryViewModel> Categories 
         {
-    
+   
         {
             get
             {
@@ -91,8 +91,7 @@ namespace UnifiToEM.ViewModels
         }
 
         private void SaveCategories()
-        {tegoryWriter writer = new CategoryWriter("categories2.xml");
-            List<Category> categories = new List<Category>(Categories.Select(vm => vm.Category));
+        {tegoryWriter writer = new CategoryWriter("categories2.xmList<Category> categories = new List<Category>(Categories.Select(vm => vm.Category));
             wri
             writer.WriteCategories(categories);
         }
@@ -145,17 +144,13 @@ namespace UnifiToEM.ViewModels
                 return;
             }
             
-            Category category = new Category() { Name = param as String };
+            Category category = new Category()ram as String };
             CategoryViewModel vm = new CategoryViewModel() { Category = category };
             Categories.Add(vm);
 
             if (CurrentCategory == null)
             {
-                CurrentCategory = vm;
-            }
+                   CurrentCategory = vm;
         }
-    }
-}
-
     }
 }

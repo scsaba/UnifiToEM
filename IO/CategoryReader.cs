@@ -13,6 +13,7 @@ namespace UnifiToEM.IO
             {
                 XmlSerializer serializer = new XmlSerializer(typeof(List<Category>), new XmlRootAttribute(Categories));
                 List<Category> categories = serializer.Deserialize(reader) as List<Category>;
+                categories.Sort((category1, category2) => string.Compare(category1.Name, category2.Name));
                 return categories;
             }
         }
