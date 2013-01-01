@@ -60,7 +60,7 @@
     <Compile Include="IO\CategoryFile.cs" />
     <Compile Include="IO\CategoryWriter.cs" />
     <Compile Include="RelayCommand.cs" />
-    <Compile Include="ViewModels\CateIO\HtmlFileImport.cs" />
+    <Compile Include="ViewModels\CateIO\HtCIBTxtFileImportpile Include="ViewModels\CateIO\HtmlFileImport.cs" />
     <Compile Include="IO\IFileImport.cs" />
     <Compile Include="IO\Impor <Compile Include="ViewModels\CateModels\Transactionompile Include="ViewModels\CategoryViewModel.cs" />
     <Compile Include="ViewModels\StringItem.cs" />

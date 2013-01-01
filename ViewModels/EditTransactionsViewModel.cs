@@ -111,10 +111,7 @@ namespace UnifiToEM.ViewModels
             Microsoft.Win32.OpenFileDialog dlg = new Microsoft.Win32.OpenFileDialog();
             dlg.RestoreDirectory = true;
             dlg.DefaultExt = ".txt"; // Default file extension
-            dlg.Filter = "Html documents (.html)|*.html|Text files (*.txt)|*.*|All files (*.*)|*.*"; // Filter files by extension 
-
-            // Show open file dialog box
-            Nullable<bool> result = dlg.ShowDialog();
+            dlg.Filter = "Html documents (.html)|*.html|Text files (*.txt)|*.*|All files (*.*)|*.*"; // Filter files by extension Text files (*.txt)|*.txt|Html documents (.html)|*.html   Nullable<bool> result = dlg.ShowDialog();
 
             // Process open file dialog box results 
             if (result == true)

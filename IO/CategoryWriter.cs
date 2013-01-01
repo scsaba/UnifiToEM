@@ -22,11 +22,11 @@ namespace UnifiToEM.IO
             settings.Encoding = Encoding.UTF8;
             settings.Indent = true;
             using (XmlWriter writer = XmlTextWriter.Create(Path, settings))
-            {
-                XmlSerializerNamespaces ns = new XmlSerializerNamespaces();
-                ns.Add("", "");
+            {                XmlSerializerNamespaces ns = new XmlSerializerNamespaces();
 
-                XmlSerializer serializer = new XmlSerializer(typeof(List<Category>), new XmlRootAttribute(Categories));
+                ns.Add("", "");
+                XmlSerializer serializer = new XmlSerializer(typeof(List<Category>), new XmlRootAttribute(Categories));
+
                 serializer.Serialize(writer, categories, ns);
             }
         }
