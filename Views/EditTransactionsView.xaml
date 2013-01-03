@@ -6,6 +6,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
     <DataGridockPanel LastChildFill="true">
+     
         <StackPanel DockPanel.Dock="Top" Orientation="Horizontal">
             <Button Content="Import file" Grid.Column="0" Grid.Row="0"  Margin="5" Padding="2" HorizontalAlignment="Right" VerticalAlignment="Center"
  
