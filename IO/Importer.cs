@@ -14,9 +14,8 @@ namespace UnifiToEM.IO
         {
             FileImporters = new List<IFileImport>();
             FileImporters.Add(new HtmlFileImport());
+            FileImporters.Add(new CIBTxtFileImport());
         }
-
-        priva    FileImporters.Add(new CIBTxt        }
 
         private static Importer instance;
         internal static Importer Instance

@@ -5,8 +5,9 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using UnifiToSystem.Windows;
-using System.Windows.Inputg UnifiToEM.IO;
+using System.Windows;
+using System.Windows.Input;
+using UnifiToEM.IO;
 using UnifiToEM.Models;
 
 namespace UnifiToEM.ViewModels
@@ -23,8 +24,8 @@ namespace UnifiToEM.ViewModels
                     Category=new Category() { Name="category 1" }, 
                     Amount=1200.50, 
                     Date=new DateTime(2012, 12, 12), 
-                    Status="Uncleared", 
-    //                Remarks="remarks 1" 
+                    //Status="Uncleared", 
+                    Remarks="remarks 1" 
                 });
 
             testTransactions.Add(
@@ -34,8 +35,8 @@ namespace UnifiToEM.ViewModels
                     Category = new Category() { Name = "category 2" },
                     Amount = 100,
                     Date = new DateTime(2012, 12, 1),
-                    Status = "Uncleared",
-              //      Remarks = "remarks 2"
+                    //Status = "Uncleared",
+                    Remarks = "remarks 2"
                 });
             testTransactions.Add(
                 new Transaction()
@@ -44,8 +45,8 @@ namespace UnifiToEM.ViewModels
                     Category = new Category() { Name = "category 1" },
                     Amount = 1212111,
                     Date = new DateTime(2012, 12, 24),
-                    Status = "Uncleared",
-                    Rema//rks = "remarks 3"
+                    //Status = "Uncleared",
+                    Remarks = "remarks 3"
                 });
 
             Transactions = new ObservableCollection<Transaction>(testTransactions);
@@ -72,14 +73,14 @@ namespace UnifiToEM.ViewModels
         {
             get
             {
-                 CategoryReader reader = new CategoryReader();
-                 List<CategCategoryReader reader = new CategoryReader();
-           return categories;
+                CategoryReader reader = new CategoryReader();
+                List<Category> categories = reader.ReadCategories();
+                return categories;
             }
         }
 
 
-        public event PropertyCangedEventHandler PropertyChanged;
+        public event PropertyChangedEventHandler PropertyChanged;
 
         private void OnPropertyChanged(string propertyName)
         {
@@ -89,8 +90,6 @@ namespace UnifiToEM.ViewModels
                 this.PropertyChanged(this, e);
             }
         }
-    }
-}
 
 
         private ICommand importFileCommand;
@@ -111,7 +110,10 @@ namespace UnifiToEM.ViewModels
             Microsoft.Win32.OpenFileDialog dlg = new Microsoft.Win32.OpenFileDialog();
             dlg.RestoreDirectory = true;
             dlg.DefaultExt = ".txt"; // Default file extension
-            dlg.Filter = "Html documents (.html)|*.html|Text files (*.txt)|*.*|All files (*.*)|*.*"; // Filter files by extension Text files (*.txt)|*.txt|Html documents (.html)|*.html   Nullable<bool> result = dlg.ShowDialog();
+            dlg.Filter = "Text files (*.txt)|*.txt|Html documents (.html)|*.html|All files (*.*)|*.*"; // Filter files by extension 
+
+            // Show open file dialog box
+            Nullable<bool> result = dlg.ShowDialog();
 
             // Process open file dialog box results 
             if (result == true)
@@ -126,17 +128,13 @@ namespace UnifiToEM.ViewModels
                     return;
                 }
 
+                SetCategoryForTransactions(importedTransactions);
+                
                 Transactions = new ObservableCollection<Transaction>(importedTransactions);
             }
         }
 
-        private IComSetCategoryForTransactions(importedTransactions);
-                      private ICommand exportCSVCommand;
-        public ICommand ExportCSVCommand
-        {
-            get
-            {
-                ivoid SetCategoryForTransactions(IEnumerable<Transaction> transactions)
+        private void SetCategoryForTransactions(IEnumerable<Transaction> transactions)
         {
             List<Category> categories = Categories;
 
@@ -157,7 +155,14 @@ namespace UnifiToEM.ViewModels
                 if (!String.IsNullOrEmpty(patternFound))
                 {
                     transaction.Category = categories.Where(category => category.MatchingPatterns.Contains(patternFound)).Select(category => category).FirstOrDefault();
-                }           get
+                }
+            }
+        }
+
+        private ICommand exportCSVCommand;
+        public ICommand ExportCSVCommand
+        {
+            get
             {
                 if (exportCSVCommand == null)
                 {

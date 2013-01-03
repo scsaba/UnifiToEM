@@ -34,13 +34,13 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="System" />
-    <Reference Include="SHtmlAgilityPack">
+    <Reference Include="HtmlAgilityPack">
       <HintPath>packages\HtmlAgilityPack.1.4.6\lib\Net45\HtmlAgilityPack.dll</HintPath>
     </Reference>
+    <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Net" />
     <Reference Include="System.Xml" />
-    <Reference Include="MicrosNetml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -59,12 +59,14 @@
     </ApplicationDefinition>
     <Compile Include="IO\CategoryFile.cs" />
     <Compile Include="IO\CategoryWriter.cs" />
-    <Compile Include="RelayCommand.cs" />
-    <Compile Include="ViewModels\CateIO\HtCIBTxtFileImportpile Include="ViewModels\CateIO\HtmlFileImport.cs" />
+    <Compile Include="IO\CIBTxtFileImport.cs" />
+    <Compile Include="IO\HtmlFileImport.cs" />
     <Compile Include="IO\IFileImport.cs" />
-    <Compile Include="IO\Impor <Compile Include="ViewModels\CateModels\Transactionompile Include="ViewModels\CategoryViewModel.cs" />
-    <Compile Include="ViewModels\StringItem.cs" />
-    <Page Include="Views\CategoryView.xamEditTransactionsViewModel.cs" />
+    <Compile Include="IO\Importer.cs" />
+    <Compile Include="Models\Transaction.cs" />
+    <Compile Include="RelayCommand.cs" />
+    <Compile Include="ViewModels\CategoryViewModel.cs" />
+    <Compile Include="ViewModels\EditTransactionsViewModel.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
     <Compile Include="ViewModels\StringItem.cs" />
     <Compile Include="Views\CategoryListView.xaml.cs">
@@ -76,11 +78,13 @@
     <Compile Include="Views\EditTransactionsView.xaml.cs">
       <DependentUpon>EditTransactionsView.xaml</DependentUpon>
     </Compile>
-    <Page Include="Views\CategoryListor>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="MainWindow.xaml">
+    <Page Include="Views\CategoryListView.xaml">
+      <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
-       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\CategoryView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -97,17 +101,17 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Views\EditTransactionsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Resources.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\Styles.xaml">
       <SubType>Designer</SubType>
-      <Generator>MSBuild:CompilEditTransactionsor>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
- Views\ResourcesSBuild:Compile</Generator>
-    </Page>
-    <Page Include="MainWindow.xaml">
-      <Generator>MSBuild:Compile</Generator>
- Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
@@ -128,9 +132,10 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
-      <LastGenOutput>Settipackages.config" /  <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <AppDesigner Include="Properties\" />
   </ItemGroup>
@@ -139,11 +144,11 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Categories.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <PreserveNewest modify your build process, add your task inside one of the targets below and uncomment it. 
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
   </Target>

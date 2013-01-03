@@ -7,8 +7,6 @@ using System.Windows.Input;
 using UnifiToEM.IO;
 using UnifiToEM.Models;
 
-names
-
 namespace UnifiToEM.ViewModels
 {
     public class CategoryListViewModel : INotifyPropertyChanged
@@ -40,8 +38,8 @@ namespace UnifiToEM.ViewModels
             get
             {
                 if (readCategoriesCommand == null)
-                {              readCategoriesCommand = new RelayCommand(param => ReadCategories());
-      
+                {
+                    readCategoriesCommand = new RelayCommand(param => ReadCategories());
                 }
                 return readCategoriesCommand;
             }
@@ -52,29 +50,29 @@ namespace UnifiToEM.ViewModels
             get
             {
                 if (saveCategoriesCommand == null)
-                {              saveCategoriesCommand = new RelayCommand(param => SaveCategories());
-      
+                {
+                    saveCategoriesCommand = new RelayCommand(param => SaveCategories());
                 }
                 return saveCategoriesCommand;
             }
         }
 
         private void ReadCategories()
-        {      CategoryReader reader = new CategoryReader();
+        {
+            CategoryReader reader = new CategoryReader();
             List<CategoryViewModel> categoryVMs = new List<CategoryViewModel>();
-            foreach (List<Category> categories = reader.ReadCategories();
-            foreach (Category category in categories     {
+            List<Category> categories = reader.ReadCategories();
+            foreach (Category category in categories)
+            {
                 CategoryViewModel model = new CategoryViewModel() { Category = category };
                 categoryVMs.Add(model);
             }
             Categories = new ObservableCollection<CategoryViewModel>(categoryVMs);
-            C
             CurrentCategory = Categories.FirstOrDefault();
         }
-te ObservableCollection<CategoryViewModel> categories;
-        public ObservableCollection<CategoryViewModel> Categories 
-        {
-   
+
+        private ObservableCollection<CategoryViewModel> categories;
+        public ObservableCollection<CategoryViewModel> Categories
         {
             get
             {
@@ -91,8 +89,9 @@ namespace UnifiToEM.ViewModels
         }
 
         private void SaveCategories()
-        {tegoryWriter writer = new CategoryWriter("categories2.xmList<Category> categories = new List<Category>(Categories.Select(vm => vm.Category));
-            wri
+        {
+            CategoryWriter writer = new CategoryWriter();
+            List<Category> categories = new List<Category>(Categories.Select(vm => vm.Category));
             writer.WriteCategories(categories);
         }
 
@@ -102,7 +101,10 @@ namespace UnifiToEM.ViewModels
             {
                 var e = new PropertyChangedEventArgs(propertyName);
                 this.PropertyChanged(this, e);
-            }    private ICommand deleteCategoryCommand;
+            }
+        }
+
+        private ICommand deleteCategoryCommand;
         public ICommand DeleteCategoryCommand
         {
             get
@@ -143,14 +145,11 @@ namespace UnifiToEM.ViewModels
             {
                 return;
             }
-            
-            Category category = new Category()ram as String };
+
+            Category category = new Category() { Name = param as String };
             CategoryViewModel vm = new CategoryViewModel() { Category = category };
             Categories.Add(vm);
-
-            if (CurrentCategory == null)
-            {
-                   CurrentCategory = vm;
+            CurrentCategory = vm;
         }
     }
 }

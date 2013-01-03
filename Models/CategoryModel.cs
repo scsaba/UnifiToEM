@@ -27,13 +27,9 @@ namespace UnifiToEM.Models
                 if (stringValue != value)
                 {
                     stringValue = value;
-                    OnPropertyChanged("Value");
-                }
-            }
-        }
+                    OnPropertyChanged("Value        public event PropertyChangedEventHandler PropertyChanged;
 
-        public event PropertyChangedEventHandler PropertyChanged;
-        private void OnPropertyChanged(string propertyName)
+        private void OnPropertyChanged(string ropertyName)
         {
             if (this.PropertyChanged != null)
             {
@@ -42,17 +38,13 @@ namespace UnifiToEM.Models
             }
 
         }
-    }
 
-    [XmlType("Category")]
-    public class CategoryModel : INotifyPropertyChanged
+        private ICommand deletePatternCommandlic class CategoryModel : INotifyPropertyChanged
     {
         private string name;
+        private ObservableCollection<Str
         private ObservableCollection<StringItem> matchingPatterns;
-
-        public String Name 
-        {
-            get
+       get
             {
                 return name;
             }
@@ -67,7 +59,9 @@ namespace UnifiToEM.Models
         }
 
         [XmlArray]
-        [XmlArrayItem(typeof(StringItem), ElementName="Pattern")]
+        [XmlArrayItem(t
+
+        [XmlArray]entName="Pattern")]
         public ObservableCollection<StringItem> MatchingPatterns 
         {
             get
@@ -96,14 +90,17 @@ namespace UnifiToEM.Models
 
         }
 
+        private ICommand deletePatternCommand
+
         private ICommand deletePatternCommand;
         public ICommand DeletePatternCommand
         {
             get
             {
                 if (deletePatternCommand == null)
-                {
-                    deletePatternCommand = new RelayCommand(param => DeletePattern(param));
+                {mand(param => DeletePattern(param));
+                }
+                return deletePatternC
                 }
                 return deletePatternCommand;
             }

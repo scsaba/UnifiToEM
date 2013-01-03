@@ -27,7 +27,8 @@ namespace UnifiToEM.ViewModels
                 List<StringItem> strings = new List<StringItem>();
                 foreach (StringItem pattern in value.MatchingPatterns)
                 {
-                    pattern.PropertyChanged += (sSubscribeToPropertyChanged(pattern)ttern);
+                    SubscribeToPropertyChanged(pattern);
+                    strings.Add(pattern);
                 }
                 this.matchingPatterns = new ObservableCollection<StringItem>(strings);
                 value.PatternsChanged += (change, pattern) =>
@@ -35,8 +36,8 @@ namespace UnifiToEM.ViewModels
                         StringItem patternItem = (StringItem)pattern;
                         if (change == PatternsChanged.Added)
                         {
+                            SubscribeToPropertyChanged(patternItem);
                             this.matchingPatterns.Add(patternItem);
-     SubscribeToPropertyChanged(patternItem);tterns.Add(patternItem);
                         }
                         else if (change == PatternsChanged.Removed)
                         {
@@ -46,11 +47,7 @@ namespace UnifiToEM.ViewModels
                             }
                         }
                     };
-                
             }
-        }
-        
-        public St}
         }
 
         private void SubscribeToPropertyChanged(StringItem pattern)
@@ -60,18 +57,20 @@ namespace UnifiToEM.ViewModels
                 if (args.PropertyName == "Value")
                 {
                     StringItem item = (StringItem)sender;
-ingPatterns[category.MatchingPatterns.IndexOf(item.OldValue)] = item.Value;
-                        }
-                    };
-  }
+                    category.MatchingPatterns[category.MatchingPatterns.IndexOf(item.OldValue)] = item.Value;
+                }
             };
         }
         
-        public String Nameterns;
+        public String Name
+        {
+            get
+            {
+                return category.Name;
             }
-        }
-
-        public event PropertyChanged            if (category.Name != value)
+            set
+            {
+                if (category.Name != value)
                 {
                     category.Name = value;
                     OnPropertyChanged("Name");
