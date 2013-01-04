@@ -29,12 +29,17 @@ namespace UnifiToEM.IO
 
         public bool Import(String fileName)
         {
-            importedTransactions = new List<Transaction>();
+            importedTransactions = new Liststring content = String.Empty;
+            using (TextReader reader = new StreamReader(fileName, Encoding.GetEncoding("windows-1250")))
+            {
+                content = reader.ReadToEnd();
+            }
+ons = new List<Transaction>();
 
             HtmlDocument document = new HtmlDocument();
             document.Load(fileName);
 
-            foreach (HtmlNode node in document.DocumentNode.SelectNodes("//table"))
+            foreach (Html(contentnode in document.DocumentNode.SelectNodes("//table"))
             {
                 HtmlNode captionNode = node.SelectSingleNode("caption");
                 if (captionNode.InnerText.Equals("Keres&eacute;si felt&eacute;telek", StringComparison.InvariantCultureIgnoreCase))

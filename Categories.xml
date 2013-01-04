@@ -1,17 +1,124 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Categories>
   <Category>
-    <Name>Category 1</Name>
+    <Name>Automobile</Name>
     <MatchingPatterns>
-      <Pattern>Pattern 1 for category 1</Pattern>
-      <Pattern>Pattern 2 for category 1</Pattern>
+      <Pattern>kgfb</Pattern>
+      <Pattern>Casco</Pattern>
     </MatchingPatterns>
   </Category>
   <Category>
-    <Name>Category 2</Name>
+    <Name>Automobile:Tankolás</Name>
+    <MatchingPatterns />
+  </Category>
+  <Category>
+    <Name>Egészségpénztár</Name>
     <MatchingPatterns>
-      <Pattern>Pattern 1 for category 2</Pattern>
-      <Pattern>Pattern 2 cat 2</Pattern>
+      <Pattern>Egészségpénztár</Pattern>
+      <Pattern>AXA</Pattern>
     </MatchingPatterns>
+  </Category>
+  <Category>
+    <Name>Entertainment</Name>
+    <MatchingPatterns>
+      <Pattern>Cinema city</Pattern>
+    </MatchingPatterns>
+  </Category>
+  <Category>
+    <Name>Feltörés</Name>
+    <MatchingPatterns>
+      <Pattern>Betét feltörése</Pattern>
+    </MatchingPatterns>
+  </Category>
+  <Category>
+    <Name>Food</Name>
+    <MatchingPatterns>
+      <Pattern>Auchan</Pattern>
+      <Pattern>Tesco</Pattern>
+      <Pattern>CBA</Pattern>
+      <Pattern>Plus</Pattern>
+      <Pattern>SPAR</Pattern>
+    </MatchingPatterns>
+  </Category>
+  <Category>
+    <Name>Food:Étterem</Name>
+    <MatchingPatterns />
+  </Category>
+  <Category>
+    <Name>Fundamenta-Új</Name>
+    <MatchingPatterns>
+      <Pattern>Fundamenta</Pattern>
+    </MatchingPatterns>
+  </Category>
+  <Category>
+    <Name>Gifts - Given</Name>
+    <MatchingPatterns />
+  </Category>
+  <Category>
+    <Name>Income:Fizetés</Name>
+    <MatchingPatterns>
+      <Pattern>EPAM</Pattern>
+    </MatchingPatterns>
+  </Category>
+  <Category>
+    <Name>Income:Kamat</Name>
+    <MatchingPatterns>
+      <Pattern>Betéti kamat fizetése</Pattern>
+      <Pattern>Forrásadó elszámolása</Pattern>
+      <Pattern>Kifizetett kamat</Pattern>
+    </MatchingPatterns>
+  </Category>
+  <Category>
+    <Name>Investment:Arany</Name>
+    <MatchingPatterns>
+      <Pattern>Four Gates</Pattern>
+    </MatchingPatterns>
+  </Category>
+  <Category>
+    <Name>Lekötés</Name>
+    <MatchingPatterns>
+      <Pattern>Betét lekötés</Pattern>
+    </MatchingPatterns>
+  </Category>
+  <Category>
+    <Name>Other</Name>
+    <MatchingPatterns />
+  </Category>
+  <Category>
+    <Name>Personal Care</Name>
+    <MatchingPatterns />
+  </Category>
+  <Category>
+    <Name>Rezsi:KábelTV</Name>
+    <MatchingPatterns>
+      <Pattern>Magyar Telekom</Pattern>
+      <Pattern>T_VSZ_MLA/T-COM BUDAPEST</Pattern>
+      <Pattern>T-Com</Pattern>
+    </MatchingPatterns>
+  </Category>
+  <Category>
+    <Name>Rezsi:Számladíj</Name>
+    <MatchingPatterns>
+      <Pattern>Bankkártya éves díja</Pattern>
+      <Pattern>Bankszámla díj</Pattern>
+    </MatchingPatterns>
+  </Category>
+  <Category>
+    <Name>Rezsi:Telszámla</Name>
+    <MatchingPatterns>
+      <Pattern>Telenor</Pattern>
+    </MatchingPatterns>
+  </Category>
+  <Category>
+    <Name>Ruha</Name>
+    <MatchingPatterns />
+  </Category>
+  <Category>
+    <Name>Transportation</Name>
+    <MatchingPatterns />
+  </Category>
+  <Category>
+    <Name>Vacation</Name>
+    <MatchingPatterns />
   </Category>
 </Categories>

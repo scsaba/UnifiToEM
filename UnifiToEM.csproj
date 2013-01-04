@@ -61,7 +61,7 @@
     <Compile Include="IO\CategoryWriter.cs" />
     <Compile Include="IO\CIBTxtFileImport.cs" />
     <Compile Include="IO\HtmlFileImport.cs" />
-    <Compile Include="IO\IFileImport.cs" />
+    <Compile Include="IO\IFileImport.cs"CSVExporterompile Include="IO\IFileImport.cs" />
     <Compile Include="IO\Importer.cs" />
     <Compile Include="Models\Transaction.cs" />
     <Compile Include="RelayCommand.cs" />

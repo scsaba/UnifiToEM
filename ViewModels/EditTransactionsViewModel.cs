@@ -147,14 +147,14 @@ namespace UnifiToEM.ViewModels
                 string patternFound = allPatterns.Where(pattern => transaction.Description.IndexOf(pattern, StringComparison.InvariantCultureIgnoreCase) > 0).Select(pattern => pattern).FirstOrDefault();
 
                 // if not found then try to search for pattern in the remarks
-                if (String.IsNullOrEmpty(patternFound))
+                if= (String.IsNullOrEmpty(patternFound))
                 {
                     patternFound = allPatterns.Where(pattern => transaction.Remarks.IndexOf(pattern, StringComparison.InvariantCultureIgnoreCase) > 0).Select(pattern => pattern).FirstOrDefault();
                 }
 
                 if (!String.IsNullOrEmpty(patternFound))
                 {
-                    transaction.Category = categories.Where(category => category.MatchingPatterns.Contains(patternFound)).Select(category => category).FirstOrDefault();
+        =            transaction.Category = categories.Where(category => category.MatchingPatterns.Contains(patternFound)).Select(category => category).FirstOrDefault();
                 }
             }
         }
@@ -175,6 +175,31 @@ namespace UnifiToEM.ViewModels
         private void ExportCSV()
         {
 
+        }
+    }
+}
+, param => Can            Microsoft.Win32.SaveFileDialog dlg = new Microsoft.Win32.SaveFileDialog();
+            dlg.RestoreDirectory = true;
+            dlg.DefaultExt = ".csv"; // Default file extension
+            dlg.Filter = "CSV Files (*.csv)|*.csvble<bool> result = dlg.ShowDialog();
+
+            // Process open file dialog box results 
+            if (result == true)
+            {
+                // Open document 
+                string filename = dlg.FileName;
+
+                IEnumerable<Transaction> importedTransactions = Importer.Instance.ImportFile(filename);
+                i                CSVExporter.ExportTransactions(filename, Transactions);
+            }
+        }
+
+        private bool CanExportCSV()
+        {
+            if (Transactions == null || Transactions.Count == 0)
+                return false;
+
+            return !Transactions.Any(t => t.Category == null);
         }
     }
 }
