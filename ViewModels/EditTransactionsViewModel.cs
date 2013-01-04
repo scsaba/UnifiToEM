@@ -144,17 +144,17 @@ namespace UnifiToEM.ViewModels
             foreach (Transaction transaction in transactions)
             {
                 // try to search for pattern in the description first
-                string patternFound = allPatterns.Where(pattern => transaction.Description.IndexOf(pattern, StringComparison.InvariantCultureIgnoreCase) > 0).Select(pattern => pattern).FirstOrDefault();
+                string patternFound = allPatterns.Where(pattern => transaction.Description.IndexOf(pattern, StringComparison.InvariantCultureIgnoreCase) >= 0).Select(pattern => pattern).FirstOrDefault();
 
                 // if not found then try to search for pattern in the remarks
-                if= (String.IsNullOrEmpty(patternFound))
+                if (String.IsNullOrEmpty(patternFound))
                 {
-                    patternFound = allPatterns.Where(pattern => transaction.Remarks.IndexOf(pattern, StringComparison.InvariantCultureIgnoreCase) > 0).Select(pattern => pattern).FirstOrDefault();
+                    patternFound = allPatterns.Where(pattern => transaction.Remarks.IndexOf(pattern, StringComparison.InvariantCultureIgnoreCase) >= 0).Select(pattern => pattern).FirstOrDefault();
                 }
 
                 if (!String.IsNullOrEmpty(patternFound))
                 {
-        =            transaction.Category = categories.Where(category => category.MatchingPatterns.Contains(patternFound)).Select(category => category).FirstOrDefault();
+                    transaction.Category = categories.Where(category => category.MatchingPatterns.Contains(patternFound)).Select(category => category).FirstOrDefault();
                 }
             }
         }
@@ -166,7 +166,7 @@ namespace UnifiToEM.ViewModels
             {
                 if (exportCSVCommand == null)
                 {
-                    exportCSVCommand = new RelayCommand(param => ExportCSV());
+                    exportCSVCommand = new RelayCommand(param => ExportCSV(), param => CanExportCSV());
                 }
                 return exportCSVCommand;
             }
@@ -174,23 +174,20 @@ namespace UnifiToEM.ViewModels
 
         private void ExportCSV()
         {
-
-        }
-    }
-}
-, param => Can            Microsoft.Win32.SaveFileDialog dlg = new Microsoft.Win32.SaveFileDialog();
+            Microsoft.Win32.SaveFileDialog dlg = new Microsoft.Win32.SaveFileDialog();
             dlg.RestoreDirectory = true;
             dlg.DefaultExt = ".csv"; // Default file extension
-            dlg.Filter = "CSV Files (*.csv)|*.csvble<bool> result = dlg.ShowDialog();
+            dlg.Filter = "CSV Files (*.csv)|*.csv|All files (*.*)|*.*"; // Filter files by extension 
+
+            // Show open file dialog box
+            Nullable<bool> result = dlg.ShowDialog();
 
             // Process open file dialog box results 
             if (result == true)
             {
                 // Open document 
                 string filename = dlg.FileName;
-
-                IEnumerable<Transaction> importedTransactions = Importer.Instance.ImportFile(filename);
-                i                CSVExporter.ExportTransactions(filename, Transactions);
+                CSVExporter.ExportTransactions(filename, Transactions);
             }
         }
 

@@ -4,7 +4,8 @@ using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Text;
-using System.Threadiext.RegularExpressionsng System.Threading.Tasks;
+using System.Text.RegularExpressions;
+using System.Threading.Tasks;
 using UnifiToEM.Models;
 
 namespace UnifiToEM.IO
@@ -15,12 +16,14 @@ namespace UnifiToEM.IO
         const string TRANSACTIONS_START = "NYITÓ EGYENLEG:";
         const string TRANSACTIONS_END = "ÖSSZESEN FORGALOM";
 
-        private CompareInconst string OUTGOING_TRANSFER = "Bankon belüli eseti utalás";
+        const string OUTGOING_TRANSFER = "Bankon belüli eseti utalás";
         const string INCOMING_TRANSFER = "Bejövő giro jóváírás";
         //const string PAYING_BY_CARD = "Bankkártyával történő vásárlás";
         const string TRANSFERING_CASH_TO_ACCOUNT = "Készpénz befizetés";
         const string INTEREST = "KIFIZETETT KAMAT";
-        const string ACCOUNT_FEE = "Jutalékvate CompareInfo compareInfo = CompareInfo.GetCompareInfo("hu-HU");
+        const string ACCOUNT_FEE = "Jutalék";
+
+        private CompareInfo compareInfo = CompareInfo.GetCompareInfo("hu-HU");
 
         private IList<Transaction> importedTransactions;
         public bool Import(string fileName)
@@ -45,9 +48,7 @@ namespace UnifiToEM.IO
                         }
                     }
 
-
-
-                    if (compareInfo.Inde                    if (compareInfo.IndexOf(line, TRANSACTIONS_START) > 0)
+                    if (compareInfo.IndexOf(line, TRANSACTIONS_START) > 0)
                     {
                         List<String> transactionText = new List<String>();
                         while ((line = reader.ReadLine()) != null)
@@ -69,17 +70,16 @@ namespace UnifiToEM.IO
                         }
                     }
 
-TimePeriod) && ImportedTransactions != null && ImportedTransactions.Count() > 0)
-                        {
-                            return true;
-{
+                    if (!String.IsNullOrEmpty(TimePeriod) && ImportedTransactions != null && ImportedTransactions.Count() > 0)
+                    {
                         return true;
-                    }ileExtension
-        {
-            get { return ".txt"; }
+                    }
+                }
+            }
+            return false;
         }
 
-        public Irivate void AddTransaction(List<string> transactionText)
+        private void AddTransaction(List<string> transactionText)
         {
             if (transactionText.Count == 0)
             {
@@ -142,7 +142,12 @@ TimePeriod) && ImportedTransactions != null && ImportedTransactions.Count() > 0)
         {
             StringBuilder sb = new StringBuilder();
             transactionInfos.ForEach(s => sb.AppendLine(Regex.Replace(s.Trim(), @"\s+", " ")));
-            return sb.ToString()    string[] parts = line.Split(' ');
+            return sb.ToString();
+        }
+
+        private bool GetTimePeriod(string line)
+        {
+            string[] parts = line.Split(' ');
             CultureInfo culture = new CultureInfo("hu-HU");
             DateTime dateTime;
             for (int i = 0; i < parts.Length; i++)
