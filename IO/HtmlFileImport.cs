@@ -156,7 +156,12 @@ namespace UnifiToEM.IO
         {
             string payee_item_description = transactionType;
             Category category = null;
-            double amount = String.IsNullOrEmpty(deposit) ? -double.Parse(withdraw) : double.Parse(deposit);
+
+            NumberFormatInfo numberformatInfo = new NumberFormatInfo();
+            numberformatInfo.NumberDecimalSeparator = ",";
+            numberformatInfo.NumberGroupSeparator = " ";
+
+            double amount = String.IsNullOrEmpty(deposit) ? -double.Parse(withdraw, numberformatInfo) : double.Parse(deposit, numberformatInfo);
             //string transactionStatus = "Uncleared";
             DateTime transactionDate = DateTime.Parse(date, CultureInfo.CreateSpecificCulture("hu-HU"));
             string remarks = FormatRemarks(transactionType, partnerAccount, partnerName, executionDate, comments, description);                                        

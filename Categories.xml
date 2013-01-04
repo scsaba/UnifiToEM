@@ -121,4 +121,8 @@
     <Name>Vacation</Name>
     <MatchingPatterns />
   </Category>
+</Categories>  <Category>
+    <Name>Donations</Name>
+    <MatchingPatterns />
+  </Category>
 </Categories>
