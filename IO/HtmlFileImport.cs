@@ -162,9 +162,11 @@ namespace UnifiToEM.IO
             numberformatInfo.NumberGroupSeparator = " ";
 
             double amount = String.IsNullOrEmpty(deposit) ? -double.Parse(withdraw, numberformatInfo) : double.Parse(deposit, numberformatInfo);
-            //string transactionStatus = "Uncleared";
-            DateTime transactionDate = DateTime.Parse(date, CultureInfo.CreateSpecificCulture("hu-HU"));
-            string remarks = FormatRemarks(transactionType, partnerAccount, partnerName, executionDate, comments, description);                                        
+     
+            //string transactionStatus = "Uncleared";       DateTime transactionDate = DateTime.Parse(date, CultureInfo.CreateSpecificCulture("hu-HU"));
+            string remarks = FormatRemarks(transactionType, partnerAccount, partnerName, executionDate, comments, description);                                        
+
+    
 
             switch (transactionType)
             {
@@ -173,11 +175,11 @@ namespace UnifiToEM.IO
                 case PAYING_BY_CARD:
                     payee_item_description = partnerName;
                     break;
-            }
-            return new Transaction() { Description = payee_item_description, Category = category, Amount = amount, /*Status = transactionStatus, */Date = transactionDate, Remarks = remarks };
+            }       return new Transaction() { Description = payee_item_description, Category = category, Amount = amount, /*Status = transactionStatus, */Date = transactionDate, Remarks = remarks };
+     
         }
-
-        private string FormatRemarks(string transactionType, string partnerAccount, string partnerName, string executionDate, string comments, string description)
+   private string FormatRemarks(string transactionType, string partnerAccount, string partnerName, string executionDate, string comments, string description)
+     
         {
             StringBuilder sb = new StringBuilder();
             sb.AppendLine("Tranzakció típusa: " + transactionType);
@@ -186,8 +188,8 @@ namespace UnifiToEM.IO
                 sb.AppendLine("Partner neve: " + partnerName);
             }
             if (!String.IsNullOrEmpty(partnerAccount))
-            {
-                sb.AppendLine("Partner bankszámlaszáma: " + partnerAccount);
+            {           sb.AppendLine("Partner bankszámlaszáma: " + partnerAccount);
+     
             }
             if (!String.IsNullOrEmpty(executionDate))
             {
