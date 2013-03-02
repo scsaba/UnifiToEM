@@ -9,6 +9,12 @@
   </Category>
   <Category>
     <Name>Automobile:Tankolás</Name>
+    <MatchingPatterns>
+      <Pattern>SOLYMARAUCHAN BEN SOLYMAR</Pattern>
+    </MatchingPatterns>
+  </Category>
+  <Category>
+    <Name>Donations</Name>
     <MatchingPatterns />
   </Category>
   <Category>
@@ -66,6 +72,7 @@
       <Pattern>Betéti kamat fizetése</Pattern>
       <Pattern>Forrásadó elszámolása</Pattern>
       <Pattern>Kifizetett kamat</Pattern>
+      <Pattern>Lekötött betét kamat fizetése</Pattern>
     </MatchingPatterns>
   </Category>
   <Category>
@@ -121,8 +128,10 @@
     <Name>Vacation</Name>
     <MatchingPatterns />
   </Category>
-</Categories>  <Category>
-    <Name>Donations</Name>
-    <MatchingPatterns />
+  <Category>
+    <Name>Lottó</Name>
+    <MatchingPatterns>
+      <Pattern>thelotter</Pattern>
+    </MatchingPatterns>
   </Category>
 </Categories>
