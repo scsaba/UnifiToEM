@@ -74,6 +74,7 @@
       <Pattern>Forrásadó elszámolása</Pattern>
       <Pattern>Kifizetett kamat</Pattern>
       <Pattern>Lekötött betét kamat fizetése</Pattern>
+      <Pattern>Kamat EHO elszámolása</Pattern>
     </MatchingPatterns>
   </Category>
   <Category>
@@ -86,6 +87,13 @@
     <Name>Lekötés</Name>
     <MatchingPatterns>
       <Pattern>Betét lekötés</Pattern>
+    </MatchingPatterns>
+  </Category>
+  <Category>
+    <Name>Lottó</Name>
+    <MatchingPatterns>
+      <Pattern>szerencsejatek</Pattern>
+      <Pattern>thelotter</Pattern>
     </MatchingPatterns>
   </Category>
   <Category>
@@ -131,10 +139,9 @@
     <MatchingPatterns />
   </Category>
   <Category>
-    <Name>Lottó</Name>
+    <Name>Medicare</Name>
     <MatchingPatterns>
-      <Pattern>szerencsejatek</Pattern>
-      <Pattern>thelotter</Pattern>
+      <Pattern>Swiss</Pattern>
     </MatchingPatterns>
   </Category>
 </Categories>
